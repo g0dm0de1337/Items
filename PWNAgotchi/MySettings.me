@@ -1,0 +1,40 @@
+flash pwnagotchi auf SD-Karte
+
+- SD-Karte bleibt im PC
+- Entweder bei 
+sudo nano etc/pwnagotchi/config.toml
+
+Oder auf der SD-karte im /boot ordner die config.toml datei bearbeiten und einfügen
+- text :
+
+main.name = "DEIN PWNAGOTCHI NAME"
+main.lang = "de"
+main.whitelist = [
+  "DEIN_EIGENES_WLAN","DEIN_ZWEITES_EIGENES_WLAN"
+]
+
+main.plugins.grid.enabled = false
+main.plugins.grid.report = false
+
+ui.display.enabled = true
+ui.display.type = "waveshare_2"
+ui.display.color = "black"
+
+main.plugins.bt-tether.enabled = true
+main.plugins.bt-tether.devices.android-phone.enabled = true
+main.plugins.bt-tether.devices.android-phone.search_order = 1
+main.plugins.bt-tether.devices.android-phone.mac = "04:42:1A:E2:D2"
+main.plugins.bt-tether.devices.android-phone.ip = "192.168.44.44"
+main.plugins.bt-tether.devices.android-phone.netmask = 24
+main.plugins.bt-tether.devices.android-phone.interval = 1
+main.plugins.bt-tether.devices.android-phone.scantime = 10
+main.plugins.bt-tether.devices.android-phone.max_tries = 0
+main.plugins.bt-tether.devices.android-phone.share_internet = false
+main.plugins.bt-tether.devices.android-phone.priority = 1
+
+- farbe umkehren
+
+sudo nano  /usr/local/lib/python3.7/dist-packages/pwnagotchi/ui/view.py
+
+WHITE = 0x00 #TauschenIn 0xff
+BLACK = 0xff #TauschenIn 0x00
